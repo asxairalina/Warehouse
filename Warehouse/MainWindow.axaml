@@ -1,0 +1,21 @@
+<!-- MainWindow.axaml -->
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="WarehouseApp.MainWindow"
+        Title="Склад стройматериалов" Width="1100" Height="750">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель навигации -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#f0f0f0" Padding="10">
+            <Button Name="BtnMain" Content="Товары" Margin="5" Click="BtnMain_Click"/>
+            <Button Name="BtnStock" Content="Запасы" Margin="5" Click="BtnStock_Click"/>
+        </StackPanel>
+
+        <!-- Контент -->
+        <ContentControl Name="MainContent" Grid.Row="1"/>
+    </Grid>
+</Window>
