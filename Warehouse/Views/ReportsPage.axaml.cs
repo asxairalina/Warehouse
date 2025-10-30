@@ -109,5 +109,9 @@ namespace Warehouse
 
             context.Dispose();
         }
+        private void BtnDashboard_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new DashboardPage(_user);
+        }
     }
 }

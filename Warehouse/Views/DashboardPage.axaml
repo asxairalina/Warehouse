@@ -1,0 +1,94 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Warehouse.DashboardPage">
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="20">
+            <TextBlock Text="📊 Дашборд" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
+            <!-- Карточки с метриками -->
+            <WrapPanel HorizontalAlignment="Center" ItemSpacing="15">
+                <!-- Выручка сегодня -->
+                <Border BorderBrush="#e0e0e0" BorderThickness="1" CornerRadius="8" Padding="15" Width="150">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="💰 Выручка сегодня" FontSize="12" Foreground="Gray" HorizontalAlignment="Center"/>
+                        <TextBlock Name="TxtTodayRevenue" Text="0 руб" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Активные заказы -->
+                <Border BorderBrush="#e0e0e0" BorderThickness="1" CornerRadius="8" Padding="15" Width="150">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="🛒 Активные заказы" FontSize="12" Foreground="Gray" HorizontalAlignment="Center"/>
+                        <TextBlock Name="TxtActiveOrders" Text="0" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Низкий запас -->
+                <Border BorderBrush="#e0e0e0" BorderThickness="1" CornerRadius="8" Padding="15" Width="150">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="📦 Низкий запас" FontSize="12" Foreground="Gray" HorizontalAlignment="Center"/>
+                        <TextBlock Name="TxtLowStock" Text="0" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Ожидающие поставки -->
+                <Border BorderBrush="#e0e0e0" BorderThickness="1" CornerRadius="8" Padding="15" Width="150">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="🚚 Ожидающие поставки" FontSize="12" Foreground="Gray" HorizontalAlignment="Center"/>
+                        <TextBlock Name="TxtPendingSupplies" Text="0" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <!-- Топ товары и распределение -->
+            <WrapPanel ItemSpacing="20" HorizontalAlignment="Center">
+                <!-- Топ товары -->
+                <Border BorderBrush="#e0e0e0" BorderThickness="1" CornerRadius="8" Padding="15" Width="300">
+                    <StackPanel>
+                        <TextBlock Text="🏆 Топ товары" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <ItemsControl Name="TopProductsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Margin="0,2"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Распределение по категориям -->
+                <Border BorderBrush="#e0e0e0" BorderThickness="1" CornerRadius="8" Padding="15" Width="300">
+                    <StackPanel>
+                        <TextBlock Text="📊 Запасы по категориям" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <ItemsControl Name="StockByCategoryList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Margin="0,2"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <!-- Уведомления -->
+            <Border BorderBrush="#e0e0e0" BorderThickness="1" CornerRadius="8" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="🔔 Уведомления" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <ItemsControl Name="AlertsList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{Binding BackgroundColor}" CornerRadius="4" Padding="10" Margin="0,2">
+                                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap"/>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+
+            <!-- Кнопка обновления -->
+            <Button Content="🔄 Обновить данные" Click="BtnRefresh_Click" HorizontalAlignment="Center" Padding="15,8"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

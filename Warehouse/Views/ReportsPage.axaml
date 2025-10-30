@@ -9,7 +9,7 @@
         <Button Content="🚚 Отчет по поставкам" Click="BtnSupplyReport_Click" Height="40" FontSize="14"/>
         <Button Content="🛒 Отчет по заказам" Click="BtnOrdersReport_Click" Height="40" FontSize="14"/>
         <Button Content="📈 Аналитика продаж" Click="BtnAnalyticsReport_Click" Height="40" FontSize="14"/>
-        
+        <Button Content="📊 Дашборд" Click="BtnDashboard_Click" />
         <TextBlock Name="TxtReportResult" Margin="0,20,0,0" TextWrapping="Wrap" MaxWidth="600"/>
     </StackPanel>
 </UserControl>

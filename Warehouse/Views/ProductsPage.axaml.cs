@@ -30,7 +30,7 @@ namespace Warehouse
         private void LoadData()
         {
             var categories = _context.Categories.ToList();
-            CmbCategories. = categories;
+            CmbCategories.ItemsSource = categories;
             CmbCategories.SelectedItem = null;
 
             LoadProducts();
