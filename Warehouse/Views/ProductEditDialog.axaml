@@ -1,0 +1,60 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Warehouse.ProductEditDialog"
+        Title="Dobavlenie tovara" 
+        Width="450" Height="500"
+        WindowStartupLocation="CenterOwner">
+    <StackPanel Margin="20" Spacing="10">
+        <TextBlock Text="Naimenovanie:"/>
+        <TextBox Name="TxtName"/>
+        
+        <TextBlock Text="Opisanie:" Margin="0,10,0,0"/>
+        <TextBox Name="TxtDescription" Height="60"/>
+        
+        <TextBlock Text="Kategoriya:" Margin="0,10,0,0"/>
+        <ComboBox Name="CmbCategory"/>
+        
+        <TextBlock Text="Edinitsa izmereniya:" Margin="0,10,0,0"/>
+        <TextBox Name="TxtUnit"/>
+        
+        <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Text="Cena zakupki:"/>
+                <TextBox Name="TxtPurchasePrice"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <TextBlock Text="Cena prodazhi:"/>
+                <TextBox Name="TxtSellingPrice"/>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Text="Min. zapas:"/>
+                <TextBox Name="TxtMinStock" Text="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <TextBlock Text="Maks. zapas:"/>
+                <TextBox Name="TxtMaxStock"/>
+            </StackPanel>
+        </Grid>
+        
+        <TextBlock Text="Usloviya hraneniya:" Margin="0,10,0,0"/>
+        <TextBox Name="TxtStorageConditions" Height="40"/>
+        
+        <CheckBox Name="ChkIsActive" Content="Aktivny" IsChecked="True" Margin="0,20,0,0"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10" Margin="0,20,0,0">
+            <Button Content="Sokhranit" Click="BtnSave_Click" Width="100"/>
+            <Button Content="Otmena" Click="BtnCancel_Click" Width="100"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,15 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Warehouse.ReportsPage">
+    <StackPanel Margin="20" Spacing="15">
+        <TextBlock Text="Отчеты" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+        
+        <Button Content="📊 Отчет по продажам" Click="BtnSalesReport_Click" Height="40" FontSize="14"/>
+        <Button Content="📦 Отчет по остаткам" Click="BtnStockReport_Click" Height="40" FontSize="14"/>
+        <Button Content="🚚 Отчет по поставкам" Click="BtnSupplyReport_Click" Height="40" FontSize="14"/>
+        <Button Content="🛒 Отчет по заказам" Click="BtnOrdersReport_Click" Height="40" FontSize="14"/>
+        <Button Content="📈 Аналитика продаж" Click="BtnAnalyticsReport_Click" Height="40" FontSize="14"/>
+        
+        <TextBlock Name="TxtReportResult" Margin="0,20,0,0" TextWrapping="Wrap" MaxWidth="600"/>
+    </StackPanel>
+</UserControl>

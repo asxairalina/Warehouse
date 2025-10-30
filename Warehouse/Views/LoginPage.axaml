@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="400" d:DesignHeight="300"
+             x:Class="Warehouse.LoginPage">
+    <StackPanel Margin="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+        <TextBlock Text="Вход в систему" Classes="h1" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <TextBlock Text="Login:" Classes="secondary" Margin="0,0,0,5" />
+        <TextBox Text="{Binding Username}" Margin="0,0,0,15"/>
+
+        <TextBlock Text="Parol:" Classes="secondary" Margin="0,0,0,5" />
+        <TextBox Text="{Binding Password}" PasswordChar="*" Margin="0,0,0,20"/>
+        
+        <WrapPanel VerticalAlignment="Center">
+            <Button Content="Войти" Command="{Binding LoginCommand}" Margin="0,0,20,0" />
+            <Button Content="Регистрация" Classes="promo" Command="{Binding RegisterCommand}"/>
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Warehouse.SuppliersPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="10">
+            <Button Name="BtnAddSupplier" Content="Dobavit postavshika" Click="BtnAddSupplier_Click"/>
+            <Button Name="BtnEditSupplier" Content="Redaktirovat" Click="BtnEditSupplier_Click"/>
+            <Button Name="BtnDeleteSupplier" Content="Udalit" Click="BtnDeleteSupplier_Click"/>
+            <TextBlock Text="Poisk:" VerticalAlignment="Center"/>
+            <TextBox Name="TxtSearch" Width="200" TextChanged="TxtSearch_TextChanged"/>
+        </StackPanel>
+        
+        <DataGrid Name="SuppliersGrid" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Naimenovanie" Binding="{Binding Name}" Width="200" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kontaktnoe litso" Binding="{Binding ContactPerson}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding Phone}" Width="120" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="150" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Aktivny" Binding="{Binding IsActive}" Width="80" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

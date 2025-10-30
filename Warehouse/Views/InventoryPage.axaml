@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Warehouse.InventoryPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="10">
+            <Button Content="Nachat inventarizaciy" Click="BtnStartInventory_Click"/>
+            <Button Content="Provesti podscheti" Click="BtnCountInventory_Click"/>
+            <Button Content="Zavershit inventsrizaciy" Click="BtnFinishInventory_Click"/>
+            <TextBlock Text="Status:" VerticalAlignment="Center"/>
+            <ComboBox Name="CmbStatus" Width="120" SelectionChanged="CmbStatus_SelectionChanged">
+                <ComboBoxItem Content="Vse"/>
+                <ComboBoxItem Content="V processse"/>
+                <ComboBoxItem Content="Zavershen"/>
+            </ComboBox>
+        </StackPanel>
+        
+        <DataGrid Grid.Row="1" Name="InventoryGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nomer" Binding="{Binding InventoryNumber}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding InventoryDate, StringFormat={}{0:dd.MM.yyyy}}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Mesto" Binding="{Binding Location}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Statys" Binding="{Binding Status}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Sozdan" Binding="{Binding CreatedAt, StringFormat={}{0:dd.MM.yyyy HH:mm}}" Width="120" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -1,6 +1,6 @@
 ﻿using System;
 using Avalonia;
-using WarehouseApp;
+using Warehouse;
 
 namespace Warehouse
 {

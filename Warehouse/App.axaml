@@ -1,10 +1,109 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="WarehouseApp.App"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
-
+             x:Class="Warehouse.App"
+             RequestedThemeVariant="Light">
     <Application.Styles>
+        <Style Selector="DataGridCell">
+            <Setter Property="Foreground" Value="#2D1B69"/>
+            <Setter Property="Background" Value="#FCFAFF"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderBrush" Value="#F0EBFF"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+        </Style>
+
+        <Style Selector="DataGridRow">
+            <Setter Property="Background" Value="#FCFAFF"/>
+            <Setter Property="Foreground" Value="#2D1B69"/>
+        </Style>
+
+        <Style Selector="DataGridRow:pointerover">
+            <Setter Property="Background" Value="#F5F0FF"/>
+        </Style>
         <FluentTheme />
+
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+
+        <Style Selector="Window">
+            <Setter Property="Background">
+                <LinearGradientBrush StartPoint="0%,100%" EndPoint="0%,0%">
+                    <GradientStop Color="#F0EBFF" Offset="0.0"/>
+                    <GradientStop Color="#FFFFFF" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#7B61FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="Padding" Value="16,0"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#6A4EFF"/>
+        </Style>
+
+        <Style Selector="Button.success">
+            <Setter Property="Background" Value="#9C27B0"/>
+        </Style>
+
+        <Style Selector="Button.success:pointerover">
+            <Setter Property="Background" Value="#8E24AA"/>
+        </Style>
+
+        <Style Selector="Button.danger">
+            <Setter Property="Background" Value="#E91E63"/>
+        </Style>
+
+        <Style Selector="Button.danger:pointerover">
+            <Setter Property="Background" Value="#D81B60"/>
+        </Style>
+
+        <Style Selector="Button.promo">
+            <Setter Property="Background" Value="#FF4081"/>
+        </Style>
+
+        <Style Selector="Button.promo:pointerover">
+            <Setter Property="Background" Value="#F50057"/>
+        </Style>
+
+        <Style Selector="TextBlock.secondary">
+            <Setter Property="Foreground" Value="#6D6B7B"/>
+        </Style>
+
+        <Style Selector="TextBlock.h1">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#7B61FF"/>
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="BorderBrush" Value="#E0D6FF"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#7B61FF"/>
+        </Style>
+
+        <Style Selector="DatePicker, TimePicker">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="BorderBrush" Value="#E0D6FF"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+
     </Application.Styles>
 </Application>

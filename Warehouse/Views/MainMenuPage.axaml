@@ -1,0 +1,35 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Warehouse.MainMenuPage"
+        WindowStartupLocation="CenterScreen"
+        Title="Система управления строительным складом" Width="900" Height="600">
+    <DockPanel>
+        <TextBlock Name="TxtWelcome" DockPanel.Dock="Top" Classes="h1" Margin="20,10"/>
+
+        <StackPanel DockPanel.Dock="Left" Width="250" Background="#F8FAFF">
+            <!-- Администратор -->
+            <Button Name="BtnProducts" Content="📦 Товары и категории" Click="BtnProducts_Click" Margin="10"/>
+            <Button Name="BtnSuppliers" Content="🏢 Поставщики" Click="BtnSuppliers_Click" Margin="10"/>
+            <Button Name="BtnReports" Content="📊 Отчеты" Click="BtnReports_Click" Margin="10"/>
+
+            <!-- Менеджер -->
+            <Button Name="BtnCustomers" Content="👥 Клиенты" Click="BtnCustomers_Click" Margin="10"/>
+            <Button Name="BtnCustomerOrders" Content="🛒 Заказы клиентов" Click="BtnCustomerOrders_Click" Margin="10"/>
+
+            <!-- Склад -->
+            <Button Name="BtnStock" Content="📦 Складские запасы" Click="BtnStock_Click" Margin="10"/>
+            <Button Name="BtnSupplyOrders" Content="🚚 Заказы поставок" Click="BtnSupplyOrders_Click" Margin="10"/>
+            <Button Name="BtnInventory" Content="📋 Инвентаризация" Click="BtnInventory_Click" Margin="10"/>
+
+            <!-- Продажи -->
+            <Button Name="BtnSalesOrders" Content="🛒 Оформление заказов" Click="BtnSalesOrders_Click" Margin="10"/>
+            <Button Name="BtnSalesCustomers" Content="👥 Работа с клиентами" Click="BtnSalesCustomers_Click" Margin="10"/>
+
+            <Separator Margin="10,20"/>
+
+            <Button Content="Выход" Classes="danger" Click="BtnLogout_Click" Margin="10"/>
+        </StackPanel>
+
+        <ContentControl Name="MainContent" Margin="10"/>
+    </DockPanel>
+</Window>

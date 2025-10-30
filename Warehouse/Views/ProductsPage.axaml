@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Warehouse.ProductsPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="10">
+            <Button Name="BtnAddProduct" Content="Dobavit tovar" Click="BtnAddProduct_Click"/>
+            <Button Name="BtnEditProduct" Content="Redaktirovat" Click="BtnEditProduct_Click"/>
+            <Button Name="BtnDeleteProduct" Content="Udalit" Click="BtnDeleteProduct_Click"/>
+            <TextBlock Text="Kategoriya:" VerticalAlignment="Center"/>
+            <ComboBox Name="CmbCategories" Width="200"
+                      SelectionChanged="CmbCategories_SelectionChanged"/>
+            <Button Name="BtnResetFilter" Content="Sbrosit filter" Click="BtnResetFilter_Click"/>
+        </StackPanel>
+        
+        <DataGrid Name="ProductsGrid" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Naimenovanie" Binding="{Binding Name}" Width="200" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kategoriya" Binding="{Binding Category.Name}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ed. izm." Binding="{Binding Unit}" Width="80" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Cena zakupki" Binding="{Binding PurchasePrice}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Cena prodazhi" Binding="{Binding SellingPrice}" Width="100" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Aktivny" Binding="{Binding IsActive}" Width="80" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

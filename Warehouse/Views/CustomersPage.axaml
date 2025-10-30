@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Warehouse.CustomersPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="10">
+            <Button Content="Dobavit clienta" Click="BtnAddCustomer_Click"/>
+            <Button Content="Redactirovat" Click="BtnEditCustomer_Click"/>
+            <Button Content="Ydalit" Click="BtnDeleteCustomer_Click"/>
+            <TextBlock Text="Tip:" VerticalAlignment="Center"/>
+            <ComboBox Name="CmbCustomerType" Width="120" SelectionChanged="CmbCustomerType_SelectionChanged">
+                <ComboBoxItem Content="Vse"/>
+                <ComboBoxItem Content="Roznica"/>
+                <ComboBoxItem Content="Opt"/>
+            </ComboBox>
+            <Button Content="Sbrosit filtr" Click="BtnResetFilter_Click"/>
+        </StackPanel>
+        
+        <DataGrid Grid.Row="1" Name="CustomersGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kontakt lico" Binding="{Binding ContactPerson}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Telephone" Binding="{Binding Phone}" Width="120" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Tip" Binding="{Binding CustomerType}" Width="80" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Activniy" Binding="{Binding IsActive}" Width="80" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

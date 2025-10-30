@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Warehouse.StockPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="10">
+            <Button Name="BtnRefresh" Content="Obnovit" Click="BtnRefresh_Click"/>
+            <Button Name="BtnAddStock" Content="Dobavit na sklad" Click="BtnAddStock_Click"/>
+            <Button Name="BtnRemoveStock" Content="Spisat so sklada" Click="BtnRemoveStock_Click"/>
+            <TextBlock Text="Poisk:" VerticalAlignment="Center"/>
+            <TextBox Name="TxtSearch" Width="200" TextChanged="TxtSearch_TextChanged"/>
+        </StackPanel>
+        
+        <DataGrid Name="StockGrid" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Tovar" Binding="{Binding Product.Name}" Width="200" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kolichestvo" Binding="{Binding Quantity}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Mesto hraneniya" Binding="{Binding Location}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Partiya" Binding="{Binding BatchNumber}" Width="120" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

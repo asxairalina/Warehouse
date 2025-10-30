@@ -1,0 +1,54 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Warehouse.CustomerOrderEditDialog"
+        Title="Oformlenie zakaza" 
+        Width="700" Height="500"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Шапка с информацией о заказе -->
+        <StackPanel Grid.Row="0" Margin="10" Spacing="10">
+            <TextBlock Text="Klient:"/>
+            <ComboBox Name="CmbCustomer" DisplayMemberBinding="{Binding Name}"/>
+            
+            <TextBlock Text="Primechaniya:"/>
+            <TextBox Name="TxtNotes" Height="40"/>
+        </StackPanel>
+        
+        <!-- Список товаров в заказе -->
+        <DataGrid Grid.Row="1" Name="OrderItemsGrid" AutoGenerateColumns="False" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tovar" Binding="{Binding Product.Name}" Width="200" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kolichestvo" Binding="{Binding Quantity}" Width="100"/>
+                <DataGridTextColumn Header="Cena" Binding="{Binding UnitPrice, StringFormat={}{0:F2}}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Summa" Binding="{Binding TotalPrice, StringFormat={}{0:F2}}" Width="100" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Deistviya" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Udalit" Click="BtnRemoveItem_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- Итоговая сумма -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <TextBlock Text="Obshaya summa:" FontWeight="Bold" Margin="0,0,10,0"/>
+            <TextBlock Name="TxtTotalAmount" Text="0.00 rub." FontWeight="Bold"/>
+        </StackPanel>
+        
+        <!-- Кнопки управления -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="10">
+            <Button Content="Dobavit tovar" Click="BtnAddProduct_Click" Width="120"/>
+            <Button Content="Sokhranit zakaz" Click="BtnSaveOrder_Click" Width="120"/>
+            <Button Content="Otmena" Click="BtnCancel_Click" Width="80"/>
+        </StackPanel>
+    </Grid>
+</Window>

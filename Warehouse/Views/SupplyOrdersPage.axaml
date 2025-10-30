@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Warehouse.SupplyOrdersPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="10">
+            <Button Content="Sozdat zakaz" Click="BtnCreateOrder_Click"/>
+            <Button Content="Prosmotret" Click="BtnViewOrder_Click"/>
+            <Button Content="Izmenit status" Click="BtnChangeStatus_Click"/>
+            <TextBlock Text="Status:" VerticalAlignment="Center"/>
+            <ComboBox Name="CmbStatus" Width="120" SelectionChanged="CmbStatus_SelectionChanged">
+                <ComboBoxItem Content="Vse"/>
+                <ComboBoxItem Content="Ozhidanie"/>
+                <ComboBoxItem Content="Podtverzhden"/>
+                <ComboBoxItem Content="Dostavlen"/>
+                <ComboBoxItem Content="Otmemen"/>
+            </ComboBox>
+            <Button Content="Sbrosit filter" Click="BtnResetFilter_Click"/>
+        </StackPanel>
+        
+        <DataGrid Grid.Row="1" Name="OrdersGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nomer" Binding="{Binding OrderNumber}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Postavshik" Binding="{Binding Supplier.Name}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Data zakaza" Binding="{Binding OrderDate, StringFormat={}{0:dd.MM.yyyy}}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ozhidaemaya data" Binding="{Binding ExpectedDeliveryDate, StringFormat={}{0:dd.MM.yyyy}}" Width="120" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Summa" Binding="{Binding TotalAmount, StringFormat={}{0:F2}}" Width="100" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Warehouse.CustomerEditDialog"
+        Title="Dobavlenie klienta" 
+        Width="450" Height="500"
+        WindowStartupLocation="CenterOwner">
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="10">
+            <TextBlock Text="Naimenovanie:"/>
+            <TextBox Name="TxtName"/>
+            
+            <TextBlock Text="Kontaktnoe litso:" Margin="0,10,0,0"/>
+            <TextBox Name="TxtContactPerson"/>
+            
+            <TextBlock Text="Telefon:" Margin="0,10,0,0"/>
+            <TextBox Name="TxtPhone"/>
+            
+            <TextBlock Text="Email:" Margin="0,10,0,0"/>
+            <TextBox Name="TxtEmail"/>
+            
+            <TextBlock Text="Adres:" Margin="0,10,0,0"/>
+            <TextBox Name="TxtAddress" Height="60"/>
+            
+            <TextBlock Text="INN:" Margin="0,10,0,0"/>
+            <TextBox Name="TxtInn"/>
+            
+            <TextBlock Text="Tip klienta:" Margin="0,10,0,0"/>
+            <ComboBox Name="CmbCustomerType">
+                <ComboBoxItem Content="Roznitsa"/>
+                <ComboBoxItem Content="Opt"/>
+            </ComboBox>
+            
+            <TextBlock Text="Skidka (%):" Margin="0,10,0,0"/>
+            <TextBox Name="TxtDiscountRate" Text="0"/>
+            
+            <CheckBox Name="ChkIsActive" Content="Aktivny" IsChecked="True" Margin="0,20,0,0"/>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10" Margin="0,20,0,0">
+                <Button Content="Sokhranit" Click="BtnSave_Click" Width="100"/>
+                <Button Content="Otmena" Click="BtnCancel_Click" Width="100"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
