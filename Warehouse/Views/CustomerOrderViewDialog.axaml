@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Warehouse.CustomerOrderViewDialog"
+        Title="Prosmotr zakaza"
+        Width="700" Height="500"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Информация о заказе -->
+        <StackPanel Grid.Row="0" Margin="10" Spacing="5">
+            <TextBlock Text="{Binding OrderNumber, StringFormat='Zakaz: {0}'}" FontWeight="Bold"/>
+            <TextBlock Text="{Binding Customer.Name, StringFormat='Klient: {0}'}"/>
+            <TextBlock Text="{Binding OrderDate, StringFormat='Data: {0:dd.MM.yyyy}'}"/>
+            <TextBlock Text="{Binding Status, StringFormat='Status: {0}'}"/>
+        </StackPanel>
+        
+        <!-- Список товаров -->
+        <DataGrid Grid.Row="1" Name="OrderItemsGrid" AutoGenerateColumns="False" Margin="10" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tovar" Binding="{Binding Product.Name}" Width="200"/>
+                <DataGridTextColumn Header="Kolichestvo" Binding="{Binding Quantity}" Width="100"/>
+                <DataGridTextColumn Header="Cena" Binding="{Binding UnitPrice, StringFormat={}{0:F2}}" Width="100"/>
+                <DataGridTextColumn Header="Summa" Binding="{Binding TotalPrice, StringFormat={}{0:F2}}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- Итоговая сумма -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <TextBlock Text="Obshaya summa:" FontWeight="Bold" Margin="0,0,10,0"/>
+            <TextBlock Name="TotalAmountText" FontWeight="Bold"/>
+        </StackPanel>
+        
+        <!-- Кнопка закрытия -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Button Content="Zakryt" Click="CloseButton_Click" Width="80"/>
+        </StackPanel>
+    </Grid>
+</Window>

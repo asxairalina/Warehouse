@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using System.Linq;
 using Warehouse.Data;
 
@@ -35,11 +36,11 @@ namespace Warehouse
             BtnStock.IsVisible = isWarehouse;
             BtnSupplyOrders.IsVisible = isWarehouse;
             BtnInventory.IsVisible = isWarehouse;
+            BtnTransfers.IsVisible = isWarehouse;
 
             BtnSalesOrders.IsVisible = isSales;
             BtnSalesCustomers.IsVisible = isSales;
 
-            // ѕоказываем первую доступную страницу
             ShowProductsPage();
         }
 
@@ -137,6 +138,11 @@ namespace Warehouse
         private void ShowReportsPage()
         {
             MainContent.Content = new ReportsPage(_user);
+        }
+
+        private void BtnTransfers_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new TransfersPage(_user);
         }
     }
 }

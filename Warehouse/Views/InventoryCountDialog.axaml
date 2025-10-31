@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Warehouse.InventoryCountDialog"
+        Title="Podschet inventarizacii"
+        Width="900" Height="600">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Информация об инвентаризации -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="15">
+            <TextBlock Text="Inventarizaciya:" FontWeight="Bold"/>
+            <TextBlock Name="TxtInventoryNumber"/>
+            <TextBlock Text="Mesto:" FontWeight="Bold" Margin="20,0,0,0"/>
+            <TextBlock Name="TxtLocation"/>
+            <TextBlock Text="Data:" FontWeight="Bold" Margin="20,0,0,0"/>
+            <TextBlock Name="TxtInventoryDate"/>
+        </StackPanel>
+        
+        <!-- Статистика -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="20" Margin="0,10,0,10">
+            <TextBlock Name="TxtTotalItems" FontWeight="Bold" Foreground="Blue"/>
+            <TextBlock Name="TxtMatchedItems" FontWeight="Bold" Foreground="Green"/>
+            <TextBlock Name="TxtDiscrepancies" FontWeight="Bold" Foreground="Red"/>
+        </StackPanel>
+        
+        <!-- Таблица подсчета -->
+        <DataGrid Grid.Row="2" Name="CountGrid" AutoGenerateColumns="False" Margin="0,10,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Kod" Binding="{Binding Product.Code}" Width="80" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Naimenovanie" Binding="{Binding Product.Name}" Width="200" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ojidaemoe" Binding="{Binding ExpectedQuantity}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Fakticheskoe" Binding="{Binding ActualQuantity}" Width="100"/>
+                <DataGridTextColumn Header="Raskhojdenie" Binding="{Binding Difference}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Primechaniya" Binding="{Binding Notes}" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,10,0,0">
+            <Button Content="Avtozapolnenie" Click="BtnAutoFill_Click" Width="120"/>
+            <Button Content="Sokhranit" Click="BtnSave_Click" Width="80"/>
+            <Button Content="Otmena" Click="BtnCancel_Click" Width="80"/>
+        </StackPanel>
+    </Grid>
+</Window>

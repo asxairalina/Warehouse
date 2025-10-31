@@ -24,38 +24,59 @@ namespace Warehouse
 
         private void LoadInventory()
         {
-            var context = new AppDbContext();
-            var inventories = context.Inventories.ToList();
+            using var context = new AppDbContext();
+            var inventories = context.Inventories
+                .Include(i => i.CreatedByNavigation)
+                .ToList();
             InventoryGrid.ItemsSource = inventories;
-            context.Dispose();
         }
 
-        private void BtnStartInventory_Click(object sender, RoutedEventArgs e)
+        private async void BtnStartInventory_Click(object sender, RoutedEventArgs e)
         {
-            ShowError("Функция начала инвентаризации в разработке");
-        }
-
-        private void BtnCountInventory_Click(object sender, RoutedEventArgs e)
-        {
-            if (InventoryGrid.SelectedItem is Inventory selectedInventory)
+            var dialog = new CreateInventoryDialog(_user);
+            var result = await dialog.ShowDialog<bool>(GetWindow());
+            if (result)
             {
-                ShowError($"Подсчет для инвентаризации: {selectedInventory.InventoryNumber}");
-            }
-            else
-            {
-                ShowError("Выберите инвентаризацию для подсчета");
+                LoadInventory();
+                ShowError("Inventarizaciya nachata");
             }
         }
 
-        private void BtnFinishInventory_Click(object sender, RoutedEventArgs e)
+        private async void BtnCountInventory_Click(object sender, RoutedEventArgs e)
         {
             if (InventoryGrid.SelectedItem is Inventory selectedInventory)
             {
-                ShowError($"Завершение инвентаризации: {selectedInventory.InventoryNumber}");
+                var dialog = new InventoryCountDialog(selectedInventory);
+                var result = await dialog.ShowDialog<bool>(GetWindow());
+                if (result)
+                {
+                    LoadInventory();
+                    ShowError("Podschet sohranen");
+                }
             }
             else
             {
-                ShowError("Выберите инвентаризацию для завершения");
+                ShowError("Vyberite inventarizaciyu dlya podsmeta");
+            }
+        }
+
+        private async void BtnFinishInventory_Click(object sender, RoutedEventArgs e)
+        {
+            if (InventoryGrid.SelectedItem is Inventory selectedInventory)
+            {
+                using var context = new AppDbContext();
+                var inventory = context.Inventories.Find(selectedInventory.Id);
+                if (inventory != null)
+                {
+                    inventory.Status = "completed";
+                    context.SaveChanges();
+                    LoadInventory();
+                    ShowError("Inventarizaciya zavershena");
+                }
+            }
+            else
+            {
+                ShowError("Vyberite inventarizaciyu dlya zaversheniya");
             }
         }
 
@@ -64,24 +85,31 @@ namespace Warehouse
             FilterInventory();
         }
 
+        private void BtnResetFilter_Click(object sender, RoutedEventArgs e)
+        {
+            CmbStatus.SelectedIndex = 0;
+            LoadInventory();
+        }
+
         private void FilterInventory()
         {
             var selectedStatus = (CmbStatus.SelectedItem as ComboBoxItem)?.Content.ToString();
 
-            var context = new AppDbContext();
-            var query = context.Inventories.AsQueryable();
+            using var context = new AppDbContext();
+            var query = context.Inventories
+                .Include(i => i.CreatedByNavigation)
+                .AsQueryable();
 
-            if (selectedStatus == "В процессе")
+            if (selectedStatus == "V processe")
             {
                 query = query.Where(i => i.Status == "in_progress");
             }
-            else if (selectedStatus == "Завершена")
+            else if (selectedStatus == "Zavershen")
             {
                 query = query.Where(i => i.Status == "completed");
             }
 
             InventoryGrid.ItemsSource = query.ToList();
-            context.Dispose();
         }
 
         private Window GetWindow()
@@ -93,7 +121,7 @@ namespace Warehouse
         {
             var dialog = new Window
             {
-                Title = "Информация",
+                Title = "Informaciya",
                 Content = new TextBlock { Text = message, Margin = new Thickness(20) },
                 SizeToContent = SizeToContent.WidthAndHeight,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner

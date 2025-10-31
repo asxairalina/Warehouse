@@ -13,7 +13,8 @@
             <Button Name="BtnDeleteProduct" Content="Udalit" Click="BtnDeleteProduct_Click"/>
             <TextBlock Text="Kategoriya:" VerticalAlignment="Center"/>
             <ComboBox Name="CmbCategories" Width="200"
-                      SelectionChanged="CmbCategories_SelectionChanged"/>
+          DisplayMemberBinding="{Binding Name}"
+          SelectionChanged="CmbCategories_SelectionChanged"/>
             <Button Name="BtnResetFilter" Content="Sbrosit filter" Click="BtnResetFilter_Click"/>
         </StackPanel>
         

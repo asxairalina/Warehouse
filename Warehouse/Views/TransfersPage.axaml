@@ -1,6 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="Warehouse.InventoryPage">
+             x:Class="Warehouse.TransfersPage">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -8,23 +8,24 @@
         </Grid.RowDefinitions>
         
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="10">
-            <Button Content="Nachat inventarizaciy" Click="BtnStartInventory_Click"/>
-            <Button Content="Provesti podscheti" Click="BtnCountInventory_Click"/>
-            <Button Content="Zavershit inventarizaciy" Click="BtnFinishInventory_Click"/>
+            <Button Content="Sozdat peremeshchenie" Click="BtnCreateTransfer_Click"/>
+            <Button Content="Vypolnit peremeshchenie" Click="BtnExecuteTransfer_Click"/>
             <TextBlock Text="Status:" VerticalAlignment="Center"/>
             <ComboBox Name="CmbStatus" Width="120" SelectionChanged="CmbStatus_SelectionChanged">
                 <ComboBoxItem Content="Vse"/>
+                <ComboBoxItem Content="Chernovik"/>
                 <ComboBoxItem Content="V processe"/>
-                <ComboBoxItem Content="Zavershen"/>
+                <ComboBoxItem Content="Zaversheno"/>
             </ComboBox>
             <Button Content="Sbrosit filtr" Click="BtnResetFilter_Click"/>
         </StackPanel>
         
-        <DataGrid Grid.Row="1" Name="InventoryGrid" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" Name="TransfersGrid" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nomer" Binding="{Binding InventoryNumber}" Width="100" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Data" Binding="{Binding InventoryDate, StringFormat={}{0:dd.MM.yyyy}}" Width="100" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Mesto" Binding="{Binding Location}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nomer" Binding="{Binding TransferNumber}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding TransferDate, StringFormat={}{0:dd.MM.yyyy}}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Otkuda" Binding="{Binding FromLocation}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kuda" Binding="{Binding ToLocation}" Width="150" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Primechaniya" Binding="{Binding Notes}" Width="200" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Sozdan" Binding="{Binding CreatedAt, StringFormat={}{0:dd.MM.yyyy HH:mm}}" Width="120" IsReadOnly="True"/>

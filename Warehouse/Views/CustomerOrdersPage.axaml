@@ -13,14 +13,11 @@
             <Button Content="Izmenit status" Click="BtnChangeStatus_Click"/>
             <TextBlock Text="Status:" VerticalAlignment="Center"/>
             <ComboBox Name="CmbStatus" Width="120" SelectionChanged="CmbStatus_SelectionChanged">
-                <ComboBoxItem Content="Vse"/>
-                <ComboBoxItem Content="Noviy"/>
-                <ComboBoxItem Content="Podtverjden"/>
-                <ComboBoxItem Content="Zarezervirovan"/>
-                <ComboBoxItem Content="Otgryzhen"/>
-                <ComboBoxItem Content="Dostavlen"/>
-                <ComboBoxItem Content="Otmenen"/>
-            </ComboBox>
+            <ComboBoxItem Content="Vse"/>
+            <ComboBoxItem Content="New"/>
+            <ComboBoxItem Content="Confirmed"/>
+            <ComboBoxItem Content="Reserved"/>
+        </ComboBox>
             <Button Content="Sbrosit filtr" Click="BtnResetFilter_Click"/>
         </StackPanel>
         

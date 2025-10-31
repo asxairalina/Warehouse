@@ -13,10 +13,10 @@
             <Button Content="Ydalit" Click="BtnDeleteCustomer_Click"/>
             <TextBlock Text="Tip:" VerticalAlignment="Center"/>
             <ComboBox Name="CmbCustomerType" Width="120" SelectionChanged="CmbCustomerType_SelectionChanged">
-                <ComboBoxItem Content="Vse"/>
-                <ComboBoxItem Content="Roznica"/>
-                <ComboBoxItem Content="Opt"/>
-            </ComboBox>
+            <ComboBoxItem Content="Vse"/>
+            <ComboBoxItem Content="Retail"/>
+            <ComboBoxItem Content="Wholesale"/>
+        </ComboBox>
             <Button Content="Sbrosit filtr" Click="BtnResetFilter_Click"/>
         </StackPanel>
         

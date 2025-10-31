@@ -20,6 +20,7 @@
             <Button Name="BtnStock" Content="📦 Складские запасы" Click="BtnStock_Click" Margin="10"/>
             <Button Name="BtnSupplyOrders" Content="🚚 Заказы поставок" Click="BtnSupplyOrders_Click" Margin="10"/>
             <Button Name="BtnInventory" Content="📋 Инвентаризация" Click="BtnInventory_Click" Margin="10"/>
+            <Button Name="BtnTransfers" Content="🔄 Перемещения" Click="BtnTransfers_Click" Margin="10"/>
 
             <!-- Продажи -->
             <Button Name="BtnSalesOrders" Content="🛒 Оформление заказов" Click="BtnSalesOrders_Click" Margin="10"/>

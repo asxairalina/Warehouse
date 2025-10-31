@@ -40,27 +40,35 @@ namespace Warehouse
             LoadOrders();
         }
 
-        private void BtnViewOrder_Click(object sender, RoutedEventArgs e)
+        private async void BtnViewOrder_Click(object sender, RoutedEventArgs e)
         {
             if (OrdersGrid.SelectedItem is CustomerOrder selectedOrder)
             {
-                ShowError($"Просмотр заказа: {selectedOrder.OrderNumber}");
+                var dialog = new CustomerOrderViewDialog(selectedOrder);
+                await dialog.ShowDialog(GetWindow());
             }
             else
             {
-                ShowError("Выберите заказ для просмотра");
+                ShowError("Vyberite zakaz dlya prosmotra");
             }
         }
 
-        private void BtnChangeStatus_Click(object sender, RoutedEventArgs e)
+        private async void BtnChangeStatus_Click(object sender, RoutedEventArgs e)
         {
             if (OrdersGrid.SelectedItem is CustomerOrder selectedOrder)
             {
-                ShowError($"Изменение статуса заказа: {selectedOrder.OrderNumber}");
+                var dialog = new ChangeOrderStatusDialog(selectedOrder);
+                var result = await dialog.ShowDialog<bool>(GetWindow());
+
+                if (result)
+                {
+                    LoadOrders(); // Obnovit spisok posle izmeneniya statusa
+                    ShowError("Status zakaza uspeshno izmenen");
+                }
             }
             else
             {
-                ShowError("Выберите заказ для изменения статуса");
+                ShowError("Vyberite zakaz dlya izmeneniya statusa");
             }
         }
 
@@ -82,34 +90,23 @@ namespace Warehouse
             var context = new AppDbContext();
             var query = context.CustomerOrders
                 .Include(o => o.Customer)
+                .Include(o => o.CustomerOrderItems)
                 .AsQueryable();
 
-            if (selectedStatus == "Новый")
+            if (selectedStatus == "New")
             {
                 query = query.Where(o => o.Status == "new");
             }
-            else if (selectedStatus == "Подтвержден")
+            else if (selectedStatus == "Confirmed")
             {
                 query = query.Where(o => o.Status == "confirmed");
             }
-            else if (selectedStatus == "Зарезервирован")
+            else if (selectedStatus == "Reserved")
             {
                 query = query.Where(o => o.Status == "reserved");
             }
-            else if (selectedStatus == "Отгружен")
-            {
-                query = query.Where(o => o.Status == "shipped");
-            }
-            else if (selectedStatus == "Доставлен")
-            {
-                query = query.Where(o => o.Status == "delivered");
-            }
-            else if (selectedStatus == "Отменен")
-            {
-                query = query.Where(o => o.Status == "cancelled");
-            }
 
-            OrdersGrid.ItemsSource= query.ToList();
+            OrdersGrid.ItemsSource = query.ToList();
             context.Dispose();
         }
 

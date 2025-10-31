@@ -80,27 +80,26 @@ namespace Warehouse
         private void BtnResetFilter_Click(object sender, RoutedEventArgs e)
         {
             CmbCustomerType.SelectedIndex = 0;
-            LoadCustomers();
+            FilterCustomers();
         }
 
         private void FilterCustomers()
         {
             var selectedType = (CmbCustomerType.SelectedItem as ComboBoxItem)?.Content.ToString();
 
-            var context = new AppDbContext();
+            using var context = new AppDbContext();
             var query = context.Customers.AsQueryable();
 
-            if (selectedType == "Розница")
+            if (selectedType == "Retail")
             {
                 query = query.Where(c => c.CustomerType == "retail");
             }
-            else if (selectedType == "Опт")
+            else if (selectedType == "Wholesale")
             {
                 query = query.Where(c => c.CustomerType == "wholesale");
             }
 
             CustomersGrid.ItemsSource = query.ToList();
-            context.Dispose();
         }
 
         private Window GetWindow()

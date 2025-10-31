@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Warehouse.CreateTransferDialog"
+        Title="Sozdat peremeshchenie"
+        Width="500" Height="450">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="Sozdanie novogo peremeshcheniya" FontWeight="Bold" Margin="0,0,0,10"/>
+        
+        <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="5" Margin="0,0,0,10">
+            <TextBlock Text="Otkuda:"/>
+            <ComboBox Name="CmbFromLocation" Width="300">
+                <ComboBoxItem Content="Glavniy sklad"/>
+                <ComboBoxItem Content="Stroyploshadka 1"/>
+                <ComboBoxItem Content="Stroyploshadka 2"/>
+                <ComboBoxItem Content="Vremenniy sklad"/>
+            </ComboBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Orientation="Vertical" Spacing="5" Margin="0,0,0,10">
+            <TextBlock Text="Kuda:"/>
+            <ComboBox Name="CmbToLocation" Width="300">
+                <ComboBoxItem Content="Glavniy sklad"/>
+                <ComboBoxItem Content="Stroyploshadka 1"/>
+                <ComboBoxItem Content="Stroyploshadka 2"/>
+                <ComboBoxItem Content="Vremenniy sklad"/>
+            </ComboBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3" Orientation="Vertical" Spacing="5" Margin="0,0,0,10">
+            <TextBlock Text="Data peremeshcheniya:"/>
+            <DatePicker Name="DpTransferDate" Width="200"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="4" Orientation="Vertical" Spacing="5" Margin="0,0,0,10">
+            <TextBlock Text="Primechaniya:"/>
+            <TextBox Name="TxtNotes" Height="60" AcceptsReturn="True"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
+            <Button Content="Sozdat" Click="BtnCreate_Click" Width="80"/>
+            <Button Content="Otmena" Click="BtnCancel_Click" Width="80"/>
+        </StackPanel>
+    </Grid>
+</Window>
